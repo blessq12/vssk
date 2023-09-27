@@ -47,8 +47,29 @@
                 </div>
             </div>
         </nav>
-        <header style="background: url('//via.placeholder.com/1920x1080')">
-
+        <header style="background: url('https://arendakovrov.com/wp-content/uploads/2020/10/MVS_0012.jpg">
+            <div class="overlay"></div>
+            <div class="container position-relative">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <h1>{{ $company->name }}</h1>
+                        <p>{{ $company->description }}</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <ul class="our-advantages">
+                            <li>Профессионалы своего дела</li>
+                            <li>Точность исполнения договора</li>
+                            <li>Собственное производство</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 py-3">
+                        <button class="btn btn-primary">Позвонить</button>
+                        <button class="btn btn-success mx-2">WhatsApp</button>
+                    </div>
+                </div>
+            </div>
         </header>
         <section>
             <div class="container">
