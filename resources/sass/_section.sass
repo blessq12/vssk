@@ -23,6 +23,7 @@ section
         list-style: none
         padding: 0
         margin: 0
+        margin-bottom: 24px
         & li
             display: flex
             font-weight: 500
@@ -31,9 +32,18 @@ section
                 margin-right: 12px
                 color: $color-main
                 font-weight: 600
-    & img
+    & .image
+        height: 300px
+        display: flex
         width: 100%
-        box-shadow: $default-shadow-1
         margin: 24px 0
+        box-shadow: $default-shadow-2
+        background-position: center !important
+        background-size: cover !important
+        background-repeat: no-repeat !important
+        border-radius: $default-radius
         @media(min-width: 768px)
+            height: 350px
             margin-top: 0
+
+        
