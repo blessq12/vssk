@@ -1,6 +1,6 @@
 header
     width: 100%
-    min-height: 500px
+    min-height: 550px
     background-position: center !important
     background-size: cover !important
     background-repeat: no-repeat !important
@@ -8,6 +8,10 @@ header
     display: flex
     align-items: center
     color: $color-white
+    @media(min-width: 768px)
+        min-height: 650px
+    @media(min-width: 920px)
+        min-height: 650px
     & .overlay
         position: absolute
         top: 0
@@ -19,14 +23,38 @@ header
         font-size: 32px
         text-transform: uppercase
         font-weight: 700
+        @media(min-width: 768px)
+            font-size: 55px
+            //max-width: 550px
+    & p
+        font-size: 16px
+        margin-bottom: 0
+        @media(min-width: 768px)
+            margin-bottom: 12px !important
+            font-size: 18px
+            max-width: 650px
+    & .advantages
+        display: block
+        @media(min-width: 768px)
+            width: 100%
+            display: flex
+            justify-content: space-between
+        @media(min-width: 920px)
+            justify-content: start
+            & #contact
+                margin-left: 24px
     & .our-advantages
         list-style: none
         padding: 0
         margin: 0
-        margin-top: 6px
+        margin: 12px 0
+        font-size: 16px
+        @media(min-width: 768px)
+            margin-top: 0
         & li
             display: flex
             font-weight: 600
+            
             &::before
                 content: '→'
                 margin-right: 6px
