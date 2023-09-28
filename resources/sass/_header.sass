@@ -43,6 +43,22 @@ header
         & a.wa
             color: $color-white
             border-color: $color-whatsapp
+            position: relative
+            z-index: 1
+            overflow: hidden
+            &::after
+               content: ''
+               height: 100%
+               width: 100%
+               background: $color-whatsapp
+               position: absolute
+               top: 0
+               left: 0 
+               z-index: -1
+               transform: translateY(100%)
+               transition: all .3s
+            &:hover::after
+                transform: translateY(0)
     & h1
         font-size: 32px
         text-transform: uppercase

@@ -2,16 +2,57 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $company->name }}</title>
     <meta name="description" content="{{ $company->description }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon/apple-touch-icon.png')}}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/favicon/favicon-32x32.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon/favicon-16x16.png')}}">
+	<link rel="manifest" href="{{ asset('assets/favicon/site.webmanifest')}}">
+	<link rel="mask-icon" href="{{ asset('assets/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
+	<link rel="shortcut icon" href="{{ asset('assets/favicon/favicon.ico')}}" type="image/x-icon">
+	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="msapplication-config" content="{{ asset('assets/favicon/browserconfig.xml')}}">
+    
+    <meta property="og:type" content="place">
+	<meta property="og:title" content="{{ $company->nameShort }} - {{ $company->name }}">
+	<meta property="og:url" content="{{ env('APP_URL') }}">
+	<meta property="og:image" content="{{ $company->logo }}">
+	<meta property="place:location:latitude" content="58.6171115">
+	<meta property="place:location:longitude" content="49.6325976">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="{{ env('APP_URL') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $company->nameShort }} - {{ $company->name }}">
+    <meta property="og:description" content="{{ $company->description }}. {{ $company->phone }}">
+    <meta property="og:image" content="{{ $company->logo }}">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $company->nameShort }} - {{ $company->name }}">
+    <meta name="twitter:description" content="{{ $company->description }}. {{ $company->phone }}">
+    <meta name="twitter:image" content="{{ $company->logo }}">
+
     @vite('resources/sass/app.sass')
     @vite('resources/js/app.js')
 </head>
 <body>
+    <div itemscope itemtype="http://schema.org/Organization" style="position: absolute; visibility: hidden;">
+        <span itemprop="name">{{ $company->nameShort }} - {{ $company->name }}</span><br>
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">{{ $company->street }}, {{ $company->house }}, {{ $company->addressAdditionals }}</span><br>
+            <span itemprop="addressLocality">{{ $company->city }}</span><br>
+            <span itemprop="addressRegion">{{ $company->state }}</span>
+            <span itemprop="postalCode">610035</span>
+        </div>
+        Phone: <span itemprop="telephone">+7(901)479-49-40</span>
+    </div>
     <div class="loader">
         <div class="container">
             <div class="row justify-content-center">

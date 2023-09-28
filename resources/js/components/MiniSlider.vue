@@ -4,6 +4,9 @@ export default{
         images: [
             {id:1, image: '/assets/images/effective.jpg'},
             {id:2, image: '/assets/images/hero.jpg'},
+            {id:3, image: '/assets/images/slider-item-1.jpg'},
+            {id:4, image: '/assets/images/slider-item-2.jpg'},
+            {id:5, image: '/assets/images/slider-item-3.jpg'},
         ], currentImage: 0
     }), methods:{
         image(direction){
