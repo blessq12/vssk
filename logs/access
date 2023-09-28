@@ -1787,3 +1787,6 @@
 127.0.0.1 - - [28/Sep/2023:22:10:39 +0700] "GET /assets/images/map-marker.png HTTP/1.1" 304 -
 127.0.0.1 - - [28/Sep/2023:22:10:39 +0700] "GET /assets/images/phone.png HTTP/1.1" 304 -
 127.0.0.1 - - [28/Sep/2023:22:10:39 +0700] "GET /assets/images/map.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [28/Sep/2023:22:27:28 +0700] "GET / HTTP/1.1" 200 22476
+127.0.0.1 - - [28/Sep/2023:22:27:28 +0700] "GET /assets/images/slogan.png HTTP/1.1" 304 -
+127.0.0.1 - - [28/Sep/2023:22:27:28 +0700] "GET /assets/images/carpets.png HTTP/1.1" 304 -

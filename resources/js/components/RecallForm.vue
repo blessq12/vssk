@@ -38,7 +38,7 @@ export default{
             >
             <div class="content" v-if="!sendStatus">
                 <h3>Форма заявки для замера</h3>
-                <p>Введите свои данные, чтобы наши менеджеры могли связатьтся с вами</p>
+                <p>Введите свои данные, чтобы наши менеджеры могли связаться с вами</p>
                 <form @submit.prevent="send()">
                     <div class="form-group mb-3">
                         <label for="name">Введите Имя:</label>
