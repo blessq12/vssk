@@ -9,6 +9,9 @@
     align-items: end
     position: relative
     box-shadow: $default-shadow-1
+    &:hover .index
+        opacity: 1
+        
     & .overlay 
         position: absolute
         top: 0
@@ -24,6 +27,7 @@
         font-size: 158px
         font-weight: 800
         opacity: 0.3
+        transition: all .3s
         
     & .content
         text-align: end
@@ -33,7 +37,7 @@
         @media(min-width: 920px)
             width: 80%
         & h3
-            font-size: 26px
+            font-size: 24px
             font-weight: 600
         & p
             font-size: 16px

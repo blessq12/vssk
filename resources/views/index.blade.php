@@ -207,6 +207,70 @@
                 </div>
             </div>
         </section>
+        <section class="pt-0" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2>Контакты</h2>
+                            <p>Вся контактная информация {{ $company->name }} в одном месте</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="contact-item">
+                            <img src="{{ asset('/assets/images/map-marker.png') }}" alt="">
+                            <div class="content">
+                                <p>Адрес:</p>
+                                <span> г. {{ $company->city }}, {{ $company->street }}, {{ $company->house }}, {{ $company->addressAdditionals }} </span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <img src="{{ asset('/assets/images/phone.png') }}" alt="">
+                            <div class="content">
+                                <p>Телефон:</p>
+                                <span><a href="tel:{{ $company->phone }}">{{ $company->phone }}</a></span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <img src="{{ asset('/assets/images/phone.png') }}" alt="">
+                            <div class="content">
+                                <p>Дополнительный телефон:</p>
+                                <span><a href="tel:{{ $company->phoneAdditional }}">{{ $company->phoneAdditional }}</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="work-hours">
+                            <h4>Режим работы</h4>
+                            @foreach ($company->workHour->days as $day)
+                                <li>{{ $day->weekDay }} <span>{{ !$day->dayOff ? "$day->open : $day->close"  : "Выходной"}}</span></li>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="map d-block">
+                            <img src="{{ asset('/assets/images/map.jpg') }}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-content">
+                            <h4>{{ $company->name }} ({{ $company->nameShort }}) {{ now()->year }}</h4>
+                            <hr>
+                            <p>Разработано: <a href="//wa.me/79833409040">CODA ❤️</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

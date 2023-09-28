@@ -9,8 +9,11 @@ class MainController extends Controller
 {
     public function index(){
         
+        $company = Company::first();
+        $company->WorkHour->days;
+
         return view('index',[
-            'company' => Company::first()
+            'company' => $company
         ]);
     }
 }

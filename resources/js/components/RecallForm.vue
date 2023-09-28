@@ -4,10 +4,16 @@ export default{
         formData: {
             name: null,
             phone: null
-        }
+        },sendStatus: false
     }), methods:{
         send(){
-            console.log(this.formData)
+            axios.post('/api/sendMessage', this.formData).then( res => {
+                if(res.data.status){
+                    this.sendStatus = !this.sendStatus
+                }
+            } ).catch( err => {
+                console.log(err)
+            } )
         }
     }
 }
@@ -16,9 +22,21 @@ export default{
 <template>
     <div class="col-12">
         <div class="recall-form">
-            <div class="recall-image" style="background: url('/assets/images/zamer.jpg');"></div>
-            <div class="content">
-                <h3>Форма для заявки на замер</h3>
+            <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+            mode="out-in"
+            >
+            <div class="recall-image" v-if="!sendStatus" style="background: url('/assets/images/zamer.jpg');"></div>
+            <div class="recall-image" v-else style="background: url('/assets/images/success.jpg');"></div>
+            </transition>
+            <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+            mode="out-in"
+            >
+            <div class="content" v-if="!sendStatus">
+                <h3>Форма заявки для замера</h3>
                 <p>Введите свои данные, чтобы наши менеджеры могли связатьтся с вами</p>
                 <form @submit.prevent="send()">
                     <div class="form-group mb-3">
@@ -35,6 +53,12 @@ export default{
                     </div>
                 </form>
             </div>
+            <div class="content" v-else>
+                <h3>Заявка упешно отправлена</h3>
+                <p>Ваша заявка отправлена, ожидайте звонка нашего менеджера. Если вы по ошибке указали не те данные, то можете повторно отправить заявку</p>
+                <button class="btn btn-primary" @click="sendStatus = !sendStatus">Вернуться к форме</button>
+            </div>
+            </transition>
         </div>
     </div>
 </template>
@@ -61,6 +85,8 @@ export default{
             min-height: inherit
     & .content
         padding: 24px
+        @media(min-width: 768px)
+            width: 50%
         & .btn
             padding: 6px 24px
         & .btn-primary

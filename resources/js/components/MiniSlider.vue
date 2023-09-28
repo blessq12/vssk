@@ -4,7 +4,6 @@ export default{
         images: [
             {id:1, image: '/assets/images/effective.jpg'},
             {id:2, image: '/assets/images/hero.jpg'},
-            {id:3, image: '/assets/images/logo.png'},
         ], currentImage: 0
     }), methods:{
         image(direction){

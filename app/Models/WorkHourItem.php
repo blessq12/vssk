@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class WorkHourItem extends Model
 {
     use HasFactory;
-
-    public function workHour(){
-        return $this->hasOne(WorkHour::class);
-    }
 }
