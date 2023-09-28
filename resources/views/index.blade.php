@@ -47,7 +47,7 @@
                 </div>
             </div>
         </nav>
-        <header style="background: url('https://arendakovrov.com/wp-content/uploads/2020/10/MVS_0012.jpg">
+        <header style="background: url('{{ asset('/assets/images/hero.jpg') }}')">
             <div class="overlay"></div>
             <div class="container position-relative">
                 <div class="row">
@@ -90,7 +90,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <div class="image " style="background: url('//via.placeholder.com/1024x1024')"></div>
+                        <div class="image mt-0" style="background: url('{{ asset('/assets/images/effective.jpg') }}')"></div>
                     </div>
                     <div class="col-12 col-md-8">
                         <p>
