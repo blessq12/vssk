@@ -90,7 +90,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <div class="image mt-0" style="background: url('{{ asset('/assets/images/effective.jpg') }}')"></div>
+                        <mini-slider></mini-slider>
                     </div>
                     <div class="col-12 col-md-8">
                         <p>
@@ -186,6 +186,24 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2>Оставьте заявку для замера</h2>
+                            <p>
+                                Оставьте заявку сейчас, чтобы произвести замеры и узнать конечную стоимость
+                            </p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <recall-form></recall-form>
                 </div>
             </div>
         </section>
