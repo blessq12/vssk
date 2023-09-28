@@ -10,6 +10,7 @@ export default{
             axios.post('/api/sendMessage', this.formData).then( res => {
                 if(res.data.status){
                     this.sendStatus = !this.sendStatus
+                    console.log(res)
                 }
             } ).catch( err => {
                 console.log(err)
@@ -78,7 +79,6 @@ export default{
         background-size: cover !important
         background-repeat: no-repeat !important
         display: none
-        border-right: 1px solid $color-main
         @media(min-width: 768px)
             display: block
             width: 50%

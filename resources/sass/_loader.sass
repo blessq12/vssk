@@ -23,6 +23,7 @@
            width: 50%
            height: 100%
            transition: all 1s
+           box-shadow: 0
         &::after
            content: ''
            position: fixed
@@ -32,11 +33,14 @@
            width: 50%
            height: 100%
            transition: all 1s
+           box-shadow: 0
         &.unhide
             &::before
                 transform: translateX(-100%)
+                box-shadow: $default-shadow-2
             &::after
                 transform: translateX(100%)
+                box-shadow: $default-shadow-2
         & img
             width: 100%
             max-width: 200px
