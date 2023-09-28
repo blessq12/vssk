@@ -7,16 +7,15 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preload" href="/assets/fonts/Corinthia.woff2" as="font" type="font/woff2" crossorigin>
     @vite('resources/sass/app.sass')
     @vite('resources/js/app.js')
 </head>
 <body>
-    <div class="loader hide">
+    <div class="loader">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 d-flex justify-content-center">
-                    <div class="loader-content unhide">
+                    <div class="loader-content">
                         <img src="{{ $company->logo }}" alt="">
                         <h3>С нами чисто</h3>
                         <ul>
@@ -36,7 +35,7 @@
                 <div class="row d-flex d-md-none d-lg-none">
                     <div class="col-6">
                         <div class="logo">
-                            <img src="{{ asset("$company->logo") }}" alt="">
+                            <img src="{{ asset("$company->logo") }}" alt="{{ $company->name }}">
                             <span>{{ $company->nameShort }}</span>
                         </div>
                     </div>
@@ -51,12 +50,12 @@
                 <div class="row d-none d-md-flex d-lg-none">
                     <div class="col-4 d-flex align-items-center">
                         <div class="logo">
-                            <img src="{{ asset("$company->logo") }}" alt="">
+                            <img src="{{ asset("$company->logo") }}" alt="{{ $company->name }}">
                             <span>{{ $company->nameShort }}</span>
                         </div>
                     </div>
                     <div class="col-4 d-flex align-items-center justify-content-center">
-                        <span class="d-block slogan">C нами чисто</span>
+                        <img src="{{ asset('/assets/images/slogan.png') }}" alt="{{ $company->name }}" class="slogan">
                     </div>
                     <div class="col-4 d-flex justify-content-end">
                         <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
@@ -69,12 +68,12 @@
                 <div class="row d-none d-md-none d-lg-flex">
                     <div class="col-4 d-flex align-items-center">
                         <div class="logo">
-                            <img src="{{ asset("$company->logo") }}" alt="">
+                            <img src="{{ asset("$company->logo") }}" alt="{{ $company->name }}">
                             <span>{{ $company->nameShort }}</span>
                         </div>
                     </div>
                     <div class="col-4 d-flex align-items-center justify-content-center">
-                        <span class="d-block slogan">C нами чисто</span>
+                        <img src="{{ asset('/assets/images/slogan.png') }}" alt="{{ $company->name }}" class="slogan">
                     </div>
                     <div class="col-4 d-flex justify-content-end">
                         <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
@@ -90,7 +89,7 @@
             <div class="container position-relative">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-8">
-                        <div class="slogan">С нами чисто</div>
+                        <img src="{{ asset('/assets/images/slogan.png') }}" class="slogan" alt="">
                         <h1>{{ $company->name }}</h1>
                         <p>{{ $company->description }}</p>
                         <div class="actions">
@@ -303,10 +302,12 @@
         let loaderContainer = document.querySelector('.loader'),
             loader = loaderContainer.querySelector('.loader-content')
         document.addEventListener('DOMContentLoaded', () => {
-            loader.classList.add('unhide')
+            setTimeout(() => {
+                loader.classList.add('unhide')
+            }, 500);
             setTimeout(() => {
                 loaderContainer.classList.add('hide')
-            }, 2000);
+            }, 1500);
         })
     </script>
 </body>
