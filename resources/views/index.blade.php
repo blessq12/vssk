@@ -6,15 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preload" href="/assets/fonts/Corinthia.woff2" as="font" type="font/woff2" crossorigin>
     @vite('resources/sass/app.sass')
     @vite('resources/js/app.js')
 </head>
 <body>
-    <div class="loader">
+    <div class="loader hide">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 d-flex justify-content-center">
-                    <div class="loader-content">
+                    <div class="loader-content unhide">
                         <img src="{{ $company->logo }}" alt="">
                         <h3>С нами чисто</h3>
                         <ul>
@@ -38,29 +40,48 @@
                             <span>{{ $company->nameShort }}</span>
                         </div>
                     </div>
-                    <div class="col-6"></div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Написать в WhatsApp
+                        </a>
+                    </div>
                 </div>
                 {{-- tablet --}}
                 <div class="row d-none d-md-flex d-lg-none">
-                    <div class="col-4">
+                    <div class="col-4 d-flex align-items-center">
                         <div class="logo">
                             <img src="{{ asset("$company->logo") }}" alt="">
                             <span>{{ $company->nameShort }}</span>
                         </div>
                     </div>
-                    <div class="col-4"></div>
-                    <div class="col-4"></div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <span class="d-block slogan">C нами чисто</span>
+                    </div>
+                    <div class="col-4 d-flex justify-content-end">
+                        <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Написать в WhatsApp
+                        </a>
+                    </div>
                 </div>
                 {{-- desktop --}}
                 <div class="row d-none d-md-none d-lg-flex">
-                    <div class="col-4">
+                    <div class="col-4 d-flex align-items-center">
                         <div class="logo">
                             <img src="{{ asset("$company->logo") }}" alt="">
                             <span>{{ $company->nameShort }}</span>
                         </div>
                     </div>
-                    <div class="col-4"></div>
-                    <div class="col-4"></div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <span class="d-block slogan">C нами чисто</span>
+                    </div>
+                    <div class="col-4 d-flex justify-content-end">
+                        <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Написать в WhatsApp
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -68,28 +89,17 @@
             <div class="overlay"></div>
             <div class="container position-relative">
                 <div class="row">
-                    <div class="col-12 col-md-12">
+                    <div class="col-12 col-md-12 col-lg-8">
+                        <div class="slogan">С нами чисто</div>
                         <h1>{{ $company->name }}</h1>
                         <p>{{ $company->description }}</p>
-                    </div>
-                    <div class="col-12 col-md-12 d-md-flex align-items-center">
-                        <div class="advantages">
-                            <ul class="our-advantages">
-                                <li>Профессионалы своего дела</li>
-                                <li>Точность исполнения договора</li>
-                                <li>Собственное производство</li>
-                            </ul>
-                            <div id="contact">
-                                <span class="d-block">Телефон: <b>{{ $company->phone }}</b></span>
-                                <span>Адрес:  <b>{{ $company->city }}, {{ $company->street }}, {{ $company->house }}, {{ $company->addressAdditionals }}</b></span>
-                            </div>
+                        <div class="actions">
+                            <a href="tel:{{ $company->phone }}" class="phone">Позвонить</a>
+                            <a href="//wa.me/79123609929" class="wa" target="_blank">WhatsApp</a>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 py-3">
-                        <button class="btn btn-primary">Позвонить</button>
-                        <button class="btn btn-success mx-2">WhatsApp</button>
+                    <div class="col-12 col-md-12 col-lg-4 d-none d-md-none d-lg-flex align-items-lg-center justify-content-lg-center">
+                        <img src="{{ asset('/assets/images/carpets.png') }}" alt="" style="width: 100%; height: auto">
                     </div>
                 </div>
             </div>
@@ -106,10 +116,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-12 col-lg-5">
                         <mini-slider></mini-slider>
                     </div>
-                    <div class="col-12 col-md-8">
+                    <div class="col-12 col-md-12 col-lg-7">
                         <p>
                             Без сервиса сменных ковров в столице России теперь не обходится ни один торгово-развлекательный и бизнес-центр, административное здание, госучреждение, медицинское заведение, школа, детский сад. 
                             Большой поток посетителей вынуждает заботиться о том, чтобы в вестибюле всегда лежали чистые сменные ковры.
@@ -296,7 +306,7 @@
             loader.classList.add('unhide')
             setTimeout(() => {
                 loaderContainer.classList.add('hide')
-            }, 1000);
+            }, 2000);
         })
     </script>
 </body>
