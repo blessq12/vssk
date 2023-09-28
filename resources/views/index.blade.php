@@ -10,6 +10,23 @@
     @vite('resources/js/app.js')
 </head>
 <body>
+    <div class="loader">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 d-flex justify-content-center">
+                    <div class="loader-content">
+                        <img src="{{ $company->logo }}" alt="">
+                        <h3>С нами чисто</h3>
+                        <ul>
+                            <li>ответственность</li>
+                            <li>доступность</li>
+                            <li>качество</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="app">
         <nav>
             <div class="container">
@@ -272,5 +289,15 @@
             </div>
         </footer>
     </div>
+    <script>
+        let loaderContainer = document.querySelector('.loader'),
+            loader = loaderContainer.querySelector('.loader-content')
+        document.addEventListener('DOMContentLoaded', () => {
+            loader.classList.add('unhide')
+            setTimeout(() => {
+                loaderContainer.classList.add('hide')
+            }, 1000);
+        })
+    </script>
 </body>
 </html>
