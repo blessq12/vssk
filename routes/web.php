@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\VsskController as VSSK;
+use App\Http\Controllers\KovrochistController as Kovrochist;
+use App\Http\Controllers\CleanKirovController as CleanKirov;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(MainController::class)->group(function(){
+Route::domain(env('VSSK_URL'))->controller(VSSK::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+});
+
+Route::domain(env('KOVROCHIST_URL'))->controller(Kovrochist::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+});
+
+Route::domain(env('CLEANKIROV_URL'))->controller(CleanKirov::class)->group(function () {
     Route::get('/', 'index')->name('index');
 });
