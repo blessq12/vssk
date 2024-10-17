@@ -1,3 +1,5 @@
+@dd($company)
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>

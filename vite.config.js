@@ -15,6 +15,7 @@ export default defineConfig({
             input: [
                 'resources/sass/app.sass',
                 'resources/js/app.js',
+                'resources/js/sites/cleankirov/app.js',
             ],
             refresh: true,
         }),
