@@ -1,5 +1,3 @@
-@dd($company)
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,7 +5,7 @@
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $company->name }}</title>
+    <title>{{ $company->title }}</title>
     <meta name="description" content="{{ $company->description }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,7 +20,7 @@
 	<meta name="msapplication-config" content="{{ asset('assets/favicon/browserconfig.xml')}}">
     
     <meta property="og:type" content="place">
-	<meta property="og:title" content="{{ $company->nameShort }} - {{ $company->name }}">
+	<meta property="og:title" content="{{ $company->title }}">
 	<meta property="og:url" content="{{ env('APP_URL') }}">
 	<meta property="og:image" content="{{ $company->logo }}">
 	<meta property="place:location:latitude" content="58.6171115">
@@ -31,29 +29,29 @@
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="{{ env('APP_URL') }}">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $company->nameShort }} - {{ $company->name }}">
+    <meta property="og:title" content="{{ $company->title }}">
     <meta property="og:description" content="{{ $company->description }}. {{ $company->phone }}">
     <meta property="og:image" content="{{ $company->logo }}">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $company->nameShort }} - {{ $company->name }}">
+    <meta name="twitter:title" content="{{ $company->title }}">
     <meta name="twitter:description" content="{{ $company->description }}. {{ $company->phone }}">
-    <meta name="twitter:image" content="{{ $company->logo }}">
+    <meta name="twitter:image" content="{{ $company->logo }}">ы
 
-    @vite('resources/sass/app.sass')
-    @vite('resources/js/app.js')
+    @vite('resources/sass/sites/vssk/app.sass')
+    @vite('resources/js/sites/vssk/app.js')
 </head>
 <body>
     <div itemscope itemtype="http://schema.org/Organization" style="position: absolute; visibility: hidden;">
-        <span itemprop="name">{{ $company->nameShort }} - {{ $company->name }}</span><br>
+        <span itemprop="name">{{ $company->title }}</span><br>
         <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-            <span itemprop="streetAddress">{{ $company->street }}, {{ $company->house }}, {{ $company->addressAdditionals }}</span><br>
-            <span itemprop="addressLocality">{{ $company->city }}</span><br>
-            <span itemprop="addressRegion">{{ $company->state }}</span>
+            <span itemprop="streetAddress">{{ $company->address }}</span><br>
+            <span itemprop="addressLocality">{{ explode(',', $company->address)[0] }}</span><br>
+            <span itemprop="addressRegion">Кировская область</span>
             <span itemprop="postalCode">610035</span>
         </div>
-        Phone: <span itemprop="telephone">+7(901)479-49-40</span>
+        Phone: <span itemprop="telephone">{{ $company->phone }}</span>
     </div>
     <div class="loader">
         <div class="container">
@@ -79,12 +77,12 @@
                 <div class="row d-flex d-md-none d-lg-none">
                     <div class="col-6">
                         <div class="logo">
-                            <img src="{{ asset("$company->logo") }}" alt="{{ $company->name }}">
-                            <span>{{ $company->nameShort }}</span>
+                            <img src="{{ asset("$company->logo") }}" alt="{{ $company->title }}">
+                            <span>{{ $company->title }}</span>
                         </div>
                     </div>
                     <div class="col-6 d-flex justify-content-end">
-                        <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
+                        <a href="//wa.me/{{ str_replace(['+', ' ', '-'], '', $company->phone) }}" target="_blank" class="whatsapp">
                             <i class="fab fa-whatsapp"></i>
                             Написать в WhatsApp
                         </a>
@@ -99,7 +97,7 @@
                         </div>
                     </div>
                     <div class="col-4 d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('/assets/images/slogan.png') }}" alt="{{ $company->name }}" class="slogan">
+                        <img src="{{ Storage::disk('assets')->url('/vssk/images/slogan.png') }}" alt="{{ $company->name }}" class="slogan">
                     </div>
                     <div class="col-4 d-flex justify-content-end">
                         <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
@@ -117,7 +115,7 @@
                         </div>
                     </div>
                     <div class="col-4 d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('/assets/images/slogan.png') }}" alt="{{ $company->name }}" class="slogan">
+                        <img src="{{ Storage::disk('assets')->url('/vssk/images/slogan.png') }}" alt="{{ $company->name }}" class="slogan">
                     </div>
                     <div class="col-4 d-flex justify-content-end">
                         <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
@@ -128,12 +126,12 @@
                 </div>
             </div>
         </nav>
-        <header style="background: url('{{ asset('/assets/images/hero.jpg') }}')">
+        <header style="background: url('{{ Storage::disk('assets')->url('/vssk/images/hero.jpg') }}')">
             <div class="overlay"></div>
             <div class="container position-relative">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-8">
-                        <img src="{{ asset('/assets/images/slogan.png') }}" class="slogan" alt="">
+                        <img src="{{ Storage::disk('assets')->url('/vssk/images/slogan.png') }}" class="slogan" alt="">
                         <h1>{{ $company->name }}</h1>
                         <p>{{ $company->description }}</p>
                         <div class="actions">
@@ -142,7 +140,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-12 col-lg-4 d-none d-md-none d-lg-flex align-items-lg-center justify-content-lg-center">
-                        <img src="{{ asset('/assets/images/carpets.png') }}" alt="" style="width: 100%; height: auto">
+                        <img src="{{ Storage::disk('assets')->url('/vssk/images/carpets.png') }}" alt="" style="width: 100%; height: auto">
                     </div>
                 </div>
             </div>
@@ -160,7 +158,15 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-5">
-                        <mini-slider></mini-slider>
+                        <mini-slider
+                            :images="[
+                                {id:1, image: '{{ Storage::disk('assets')->url('/vssk/images/effective.jpg') }}'},
+                                {id:2, image: '{{ Storage::disk('assets')->url('/vssk/images/hero.jpg') }}'},
+                                {id:3, image: '{{ Storage::disk('assets')->url('/vssk/images/slider-item-1.jpg') }}'},
+                                {id:4, image: '{{ Storage::disk('assets')->url('/vssk/images/slider-item-2.jpg') }}'},
+                                {id:5, image: '{{ Storage::disk('assets')->url('/vssk/images/slider-item-3.jpg') }}'},
+                            ]"
+                        ></mini-slider>
                     </div>
                     <div class="col-12 col-md-12 col-lg-7">
                         <p>
@@ -202,7 +208,6 @@
                                 <h3>Оформляете заказ</h3>
                                 <p>По номеру телефона или оставьте заявку на нашем сайте и мы вам перезвоним</p>
                             </div>
-                            
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
@@ -273,7 +278,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <recall-form></recall-form>
+                    <recall-form
+                        image="{{ Storage::disk('assets')->url('/vssk/images/zamer.jpg') }}"
+                        success-image="{{ Storage::disk('assets')->url('/vssk/images/success.jpg') }}"
+                    ></recall-form>
                 </div>
             </div>
         </section>
@@ -288,41 +296,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-md-4">
+                <div class="row row-cols-1 row-cols-md-2">
+                    <div class="col-12">
                         <div class="contact-item">
-                            <img src="{{ asset('/assets/images/map-marker.png') }}" alt="">
+                            <img src="{{ Storage::disk('assets')->url('/vssk/images/map-marker.png') }}" alt="">
                             <div class="content">
                                 <p>Адрес:</p>
-                                <span> г. {{ $company->city }}, {{ $company->street }}, {{ $company->house }}, {{ $company->addressAdditionals }} </span>
+                                <span> г. {{ $company->address }} </span>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <img src="{{ asset('/assets/images/phone.png') }}" alt="">
+                            <img src="{{ Storage::disk('assets')->url('/vssk/images/phone.png') }}" alt="">
                             <div class="content">
                                 <p>Телефон:</p>
                                 <span><a href="tel:{{ $company->phone }}">{{ $company->phone }}</a></span>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <img src="{{ asset('/assets/images/phone.png') }}" alt="">
-                            <div class="content">
-                                <p>Дополнительный телефон:</p>
-                                <span><a href="tel:{{ $company->phoneAdditional }}">{{ $company->phoneAdditional }}</a></span>
-                            </div>
-                        </div>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <div class="work-hours">
-                            <h4>Режим работы</h4>
-                            @foreach ($company->workHour->days as $day)
-                                <li>{{ $day->weekDay }} <span>{{ !$day->dayOff ? "$day->open : $day->close"  : "Выходной"}}</span></li>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12">
                         <div class="map d-block">
-                            <img src="{{ asset('/assets/images/map.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ Storage::disk('assets')->url('/vssk/images/map.jpg') }}" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -333,7 +326,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-content">
-                            <h4>{{ $company->name }} ({{ $company->nameShort }}) {{ now()->year }}</h4>
+                            <h4 class="">{{ $company->title }} {{ now()->year }}</h4>
                             <hr>
                             <p>Разработано: <a href="//wa.me/79833409040">CODA ❤️</a></p>
                         </div>

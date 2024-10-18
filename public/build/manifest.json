@@ -1,40 +1,60 @@
 {
-  "_maska-b83c94fb.js": {
-    "css": [
-      "assets/maska-dc6f02f7.css"
-    ],
-    "file": "assets/maska-b83c94fb.js"
+  "_maska-da9c1deb.js": {
+    "file": "assets/maska-da9c1deb.js"
   },
-  "maska.css": {
-    "file": "assets/maska-dc6f02f7.css",
-    "src": "maska.css"
-  },
-  "resources/js/app.css": {
-    "file": "assets/app-8c343808.css",
-    "src": "resources/js/app.css"
-  },
-  "resources/js/app.js": {
-    "css": [
-      "assets/app-8c343808.css"
-    ],
-    "file": "assets/app-2e0a0abc.js",
-    "imports": [
-      "_maska-b83c94fb.js"
-    ],
-    "isEntry": true,
-    "src": "resources/js/app.js"
+  "resources/js/sites/cleankirov/app.css": {
+    "file": "assets/app-dc6f02f7.css",
+    "src": "resources/js/sites/cleankirov/app.css"
   },
   "resources/js/sites/cleankirov/app.js": {
-    "file": "assets/app-8da2aba5.js",
+    "css": [
+      "assets/app-dc6f02f7.css"
+    ],
+    "file": "assets/app-2d605bb0.js",
     "imports": [
-      "_maska-b83c94fb.js"
+      "_maska-da9c1deb.js"
     ],
     "isEntry": true,
     "src": "resources/js/sites/cleankirov/app.js"
   },
-  "resources/sass/app.sass": {
+  "resources/js/sites/kovrochist/app.css": {
+    "file": "assets/app-1218410f.css",
+    "src": "resources/js/sites/kovrochist/app.css"
+  },
+  "resources/js/sites/kovrochist/app.js": {
+    "css": [
+      "assets/app-1218410f.css"
+    ],
+    "file": "assets/app-fdbcd671.js",
+    "imports": [
+      "_maska-da9c1deb.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/sites/kovrochist/app.js"
+  },
+  "resources/js/sites/vssk/app.css": {
+    "file": "assets/app-8c343808.css",
+    "src": "resources/js/sites/vssk/app.css"
+  },
+  "resources/js/sites/vssk/app.js": {
+    "css": [
+      "assets/app-8c343808.css"
+    ],
+    "file": "assets/app-cf5776d5.js",
+    "imports": [
+      "_maska-da9c1deb.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/sites/vssk/app.js"
+  },
+  "resources/sass/sites/kovrochist/app.sass": {
+    "file": "assets/app-b56c7f7a.css",
+    "isEntry": true,
+    "src": "resources/sass/sites/kovrochist/app.sass"
+  },
+  "resources/sass/sites/vssk/app.sass": {
     "file": "assets/app-ac46496b.css",
     "isEntry": true,
-    "src": "resources/sass/app.sass"
+    "src": "resources/sass/sites/vssk/app.sass"
   }
 }

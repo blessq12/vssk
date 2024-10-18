@@ -1,0 +1,48 @@
+section#contact
+    & .contact-item
+        height: 80px
+        border-left: 5px solid $color-main
+        border-radius: $default-radius
+        margin-bottom: 24px
+        padding: 18px
+        display: flex
+        align-items: center
+        & img
+            height: 100%
+            margin-right: 12px
+        & p
+            font-weight: 400
+            font-size: 14px
+            display: block
+            margin-bottom: 0
+        & span
+            font-size: 18px
+            font-weight: 600
+            line-height: 1
+            display: block
+            & a
+                text-decoration: none
+    & .map
+        min-height: 200px
+        max-height: 300px
+        display: flex
+        overflow: hidden
+        border-radius: $default-radius
+        box-shadow: $default-shadow-2
+        & img
+            align-self: center
+            width: 100%
+            height: auto
+    & .work-hours
+        list-style: none
+        margin-bottom: 24px
+        display: block
+        @media(min-width:768px)
+        & li
+            padding: 6px 0
+            display: flex
+            justify-content: space-between
+            & span
+                font-weight: 600
+                &::before
+                    content: ''

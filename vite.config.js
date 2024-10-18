@@ -13,9 +13,11 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/sass/app.sass',
-                'resources/js/app.js',
+                'resources/js/sites/vssk/app.js',
+                'resources/sass/sites/vssk/app.sass',
                 'resources/js/sites/cleankirov/app.js',
+                'resources/js/sites/kovrochist/app.js',
+                'resources/sass/sites/kovrochist/app.sass',
             ],
             refresh: true,
         }),

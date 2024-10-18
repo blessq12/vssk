@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ActionController;
+use App\Http\Controllers\Api\RawController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(ApiController::class)->group(function(){
-    Route::post('sendMessage', 'sendMessage');
+Route::controller(ActionController::class)->prefix('action')->group(function () {
+    Route::get('help', 'help');
+    Route::post('create-slug-order', 'createSlugOrder');
+    Route::get('send-message', 'sendMessage');
+});
+
+Route::controller(RawController::class)->prefix('raw')->group(function () {
+    Route::get('help', 'help');
 });
