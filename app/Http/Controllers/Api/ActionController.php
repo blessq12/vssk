@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+// Requests
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
+// Services
 use App\Facades\TelegramNotification;
+// Models
+use App\Models\ClientRequest as RequestModel;
 
 class ActionController extends Controller
 {
@@ -23,14 +28,25 @@ class ActionController extends Controller
         return 'This is help for ActionController';
     }
 
-    public function createSlugOrder(Request $request)
+    public function createClientRequest(ClientRequest $request)
     {
-        return $request->all();
-    }
+        \Log::info('Session Data:', session()->all());
+        $validated = $request->validated();
 
-    public function sendMessage(Request $request)
+        // Check for validation errors
+        $clientRequest = RequestModel::create($validated);
+
+        return response()->json([
+            'message' => 'Request created successfully',
+            'data' => $clientRequest,
+        ]);
+    }
+    public function getClientRequest($id)
     {
-        $message = $request->message;
-        return TelegramNotification::sendMessage($message);
+        $clientRequest = RequestModel::find($id)->first();
+
+        return response()->json([
+            'request' => $clientRequest,
+        ]);
     }
 }

@@ -37,7 +37,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $company->title }}">
     <meta name="twitter:description" content="{{ $company->description }}. {{ $company->phone }}">
-    <meta name="twitter:image" content="{{ $company->logo }}">ы
+    <meta name="twitter:image" content="{{ $company->logo }}">
 
     @vite('resources/sass/sites/vssk/app.sass')
     @vite('resources/js/sites/vssk/app.js')
@@ -58,7 +58,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 d-flex justify-content-center">
                     <div class="loader-content">
-                        <img src="{{ $company->logo }}" alt="">
+                        <img src="{{ Storage::disk('assets')->url('/vssk/images/logo.png') }}" alt="{{ $company->title }}">
                         <h3>С нами чисто</h3>
                         <ul>
                             <li>ответственность</li>
@@ -77,12 +77,12 @@
                 <div class="row d-flex d-md-none d-lg-none">
                     <div class="col-6">
                         <div class="logo">
-                            <img src="{{ asset("$company->logo") }}" alt="{{ $company->title }}">
+                            <img src="{{ Storage::disk('assets')->url('/vssk/images/logo.png') }}" alt="{{ $company->title }}">
                             <span>{{ $company->title }}</span>
                         </div>
                     </div>
                     <div class="col-6 d-flex justify-content-end">
-                        <a href="//wa.me/{{ str_replace(['+', ' ', '-'], '', $company->phone) }}" target="_blank" class="whatsapp">
+                        <a href="//wa.me/{{ str_replace(['+', ' ', '-', '(', ')'], '', $company->phone) }}" target="_blank" class="whatsapp">
                             <i class="fab fa-whatsapp"></i>
                             Написать в WhatsApp
                         </a>
@@ -92,15 +92,15 @@
                 <div class="row d-none d-md-flex d-lg-none">
                     <div class="col-4 d-flex align-items-center">
                         <div class="logo">
-                            <img src="{{ asset("$company->logo") }}" alt="{{ $company->name }}">
-                            <span>{{ $company->nameShort }}</span>
+                            <img src="{{ Storage::disk('assets')->url('/vssk/images/logo.png') }}" alt="{{ $company->name }}">
+                            <span>{{ $company->title }}</span>
                         </div>
                     </div>
                     <div class="col-4 d-flex align-items-center justify-content-center">
                         <img src="{{ Storage::disk('assets')->url('/vssk/images/slogan.png') }}" alt="{{ $company->name }}" class="slogan">
                     </div>
                     <div class="col-4 d-flex justify-content-end">
-                        <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
+                        <a href="//wa.me/{{ str_replace(['+', ' ', '-', '(', ')'], '', $company->phone) }}" target="_blank" class="whatsapp">
                             <i class="fab fa-whatsapp"></i>
                             Написать в WhatsApp
                         </a>
@@ -110,15 +110,15 @@
                 <div class="row d-none d-md-none d-lg-flex">
                     <div class="col-4 d-flex align-items-center">
                         <div class="logo">
-                            <img src="{{ asset("$company->logo") }}" alt="{{ $company->name }}">
-                            <span>{{ $company->nameShort }}</span>
+                            <img src="{{ Storage::disk('assets')->url('/vssk/images/logo.png') }}" alt="{{ $company->name }}">
+                            <span>{{ $company->title }}</span>
                         </div>
                     </div>
                     <div class="col-4 d-flex align-items-center justify-content-center">
                         <img src="{{ Storage::disk('assets')->url('/vssk/images/slogan.png') }}" alt="{{ $company->name }}" class="slogan">
                     </div>
                     <div class="col-4 d-flex justify-content-end">
-                        <a href="//wa.me/79123609929" target="_blank" class="whatsapp">
+                        <a href="//wa.me/{{ str_replace(['+', ' ', '-', '(', ')'], '', $company->phone) }}" target="_blank" class="whatsapp">
                             <i class="fab fa-whatsapp"></i>
                             Написать в WhatsApp
                         </a>
@@ -129,14 +129,14 @@
         <header style="background: url('{{ Storage::disk('assets')->url('/vssk/images/hero.jpg') }}')">
             <div class="overlay"></div>
             <div class="container position-relative">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-12 col-md-12 col-lg-8">
                         <img src="{{ Storage::disk('assets')->url('/vssk/images/slogan.png') }}" class="slogan" alt="">
                         <h1>{{ $company->name }}</h1>
                         <p>{{ $company->description }}</p>
                         <div class="actions">
                             <a href="tel:{{ $company->phone }}" class="phone">Позвонить</a>
-                            <a href="//wa.me/79123609929" class="wa" target="_blank">WhatsApp</a>
+                            <a href="//wa.me/{{ str_replace(['+', ' ', '-', '(', ')'], '', $company->phone) }}" class="wa" target="_blank">WhatsApp</a>
                         </div>
                     </div>
                     <div class="col-12 col-md-12 col-lg-4 d-none d-md-none d-lg-flex align-items-lg-center justify-content-lg-center">
@@ -328,7 +328,7 @@
                         <div class="footer-content">
                             <h4 class="">{{ $company->title }} {{ now()->year }}</h4>
                             <hr>
-                            <p>Разработано: <a href="//wa.me/79833409040">CODA ❤️</a></p>
+                            {{-- <p>Разработано: <a href="//wa.me/79833409040">CODA ❤️</a></p> --}}
                         </div>
                     </div>
                 </div>

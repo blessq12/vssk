@@ -18,8 +18,8 @@ use App\Http\Controllers\Api\RawController;
 
 Route::controller(ActionController::class)->prefix('action')->group(function () {
     Route::get('help', 'help');
-    Route::post('create-slug-order', 'createSlugOrder');
-    Route::get('send-message', 'sendMessage');
+    Route::post('/create-client-request', 'createClientRequest');
+    Route::get('/get-client-request/{id}', 'getClientRequest');
 });
 
 Route::controller(RawController::class)->prefix('raw')->group(function () {

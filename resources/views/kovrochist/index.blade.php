@@ -44,7 +44,7 @@
 		{{-- Styles --}}
 		@include('includes/cdn')
 		
-        @vite('resources/sass/kovrochist/app.sass')
+        @vite('resources/sass/sites/kovrochist/app.sass')
         @vite('resources/js/sites/kovrochist/app.js')
 
 		<script type="application/ld+json">

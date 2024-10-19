@@ -111,7 +111,7 @@
         </div>
     </header>
     <!-- start banner Area -->
-    <section class="banner-area" id="home" style="background-image: url('{{ Storage::disk('assets')->url('cleankirov/images/header-bg.png') }}');">
+    <section class="banner-area d-flex align-items-center justify-content-center" id="home" style="background-image: url('{{ Storage::disk('assets')->url('cleankirov/images/header-bg.png') }}');">
         <div class="container">
             <div class="row fullscreen d-flex align-items-center justify-content-center">
                 <div class="banner-content col-lg-10">

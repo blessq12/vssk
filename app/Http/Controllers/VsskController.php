@@ -17,7 +17,7 @@ class VsskController extends Controller
             'company',
             Company::where(
                 'domain',
-                env('APP_ENV') == 'develop' ? self::PROD_DOMAIN : request()->getHost()
+                env('APP_ENV') == 'local' ? self::PROD_DOMAIN : request()->getHost()
             )->first()
         );
     }
