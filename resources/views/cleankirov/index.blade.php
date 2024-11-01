@@ -277,7 +277,7 @@
                     <div class="title">
                         <h6 class="text-uppercase fw-light mb-0" style="color: #09bd96">Портфолио</h6>
                         <h2 class="text-light">Несколько примеров наших работ</h2>
-                        <p>Больше фото можно найти в группе социальной сети <a href="<?echo $meta->contact['social']['vk']?>" target="_blank">Вконтакте</a></p>
+                        <p>Больше фото можно найти в группе социальной сети <a href="" target="_blank">Вконтакте</a></p>
                     </div>
                 </div>
             </div>
@@ -310,7 +310,7 @@
                     <div class="title">
                         <h6 class="text-uppercase fw-light mb-0" style="color: #09bd96">Отзывы</h6>
                         <h2 class="mb-10">Что о нас говорят</h2>
-                        <p>Больше отзывов можно найти в группе социальной сети <a href="<?echo $meta->contact['social']['vk']?>" target="_blank">Вконтакте</a></p>
+                        <p>Больше отзывов можно найти в группе социальной сети <a href="" target="_blank">Вконтакте</a></p>
                     </div>
                 </div>
             </div>
