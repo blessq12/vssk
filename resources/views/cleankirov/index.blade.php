@@ -328,22 +328,15 @@
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 no-padding home-about-left">
-                    <div id="beer-slider" class="beer-slider" data-beer-label="До">
-                        <img class="img-fluid" 
-                        src="{{ Storage::disk('assets')->url('cleankirov/images/about-img1.jpg') }}" 
-                        alt="{{$company->description}}">
-                        <div class="beer-reveal" data-beer-label="После">
-                            <img class="img-fluid" 
-                            src="{{ Storage::disk('assets')->url('cleankirov/images/about-img.jpg') }}" 
-                            alt="{{$company->description}}">
-                        </div>
-
-                    </div>
+                    <compare
+                        before-image="{{ Storage::disk('assets')->url('cleankirov/images/about-img1.jpg') }}"
+                        after-image="{{ Storage::disk('assets')->url('cleankirov/images/about-img.jpg') }}"
+                    ></compare>
                 </div>
                 <div class="col-lg-6 no-padding home-about-right">
                     <div class="title"> 
-                        <h6 class="text-uppercase fw-light mb-0" style="color: #09bd96">Разница невооруженным глазом</h6>
-                        <h2>Очевидна, если присмотреться</h2>
+                        <h6 class="text-uppercase fw-light mb-0" style="color: #181e1d">Очевидная разница</h6>
+                        <h2>Невооруженным глазом</h2>
                         <p>
                             Позаботьтесь о состоянии вашего имущества
                         </p>

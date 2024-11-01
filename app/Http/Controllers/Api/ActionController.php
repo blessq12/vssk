@@ -77,4 +77,17 @@ class ActionController extends Controller
             'request' => $clientRequest,
         ]);
     }
+    public function sendOrderData(Request $request)
+    {
+        try {
+            $response = TelegramNotification::sendMessage($request->message);
+        } catch (\Exception $e) {
+            $error = $e->getMessage();
+        }
+
+        return response()->json([
+            'status' => $response,
+            'error' => $error ?? null,
+        ]);
+    }
 }

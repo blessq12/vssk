@@ -20,6 +20,7 @@ Route::controller(ActionController::class)->prefix('action')->group(function () 
     Route::get('help', 'help');
     Route::post('/create-client-request/{site_id}', 'createClientRequest');
     Route::get('/get-client-request/{id}', 'getClientRequest');
+    Route::post('/send-order-data', 'sendOrderData');
 });
 
 Route::controller(RawController::class)->prefix('raw')->group(function () {

@@ -19,19 +19,11 @@ class TelegramNotification
     {
         try {
             $preparedMessage = $this->prepareMessage($message);
-
             $telegramUrl = "https://api.telegram.org/bot$this->token/sendMessage?chat_id=$this->recepientId&text=";
-
             $response = file_get_contents($telegramUrl . $preparedMessage);
-
-            if ($response) {
-                return ['success' => true];
-            } else {
-                return ['success' => false, 'error' => 'Failed to send message.'];
-            }
+            return json_decode($response)->ok ? true : throw new \Exception('Failed to send message.');
         } catch (\Exception $e) {
-
-            return ['success' => false, 'error' => $e->getMessage()];
+            return $e->getMessage();
         }
     }
 
