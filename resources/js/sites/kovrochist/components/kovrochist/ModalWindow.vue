@@ -10,31 +10,37 @@ export default {
         success: false,
         formHeight: null,
         formInputs: {},
-        formErrors: {},
+        formErrors: [],
         schema: object({
             name: string().required('Обязательное поле').min(3, 'Минимум 3 символа'),
             tel: string().required('Обязательное поле').min(18, 'Некорректный номер') 
         })
     }),
     methods:{
-        validate(){
+        validate() {
+            this.formErrors = [];
             this.schema.validate(this.formInputs, {abortEarly: false})
-            .then( res => { 
-                axios.post('/api/notify/telegram', res)
                 .then(res => {
-                    if (res.status){
-                        this.success = true;
-                        this.send = !this.send
-                    }
+                    let message = "Новая заявка с сайта КОВРОЧИСТ\n\n"
+                    message += `Имя: ${res.name}\n`
+                    message += `Телефон: ${res.tel}`
+
+                    axios.post('/api/action/send-order-data', {message})
+                        .then(res => {
+                            this.success = true
+                            this.formInputs = {}
+                            setTimeout(() => {
+                                this.modal = false
+                            }, 300)
+                        })
+                        .catch( err => {
+                            this.success = false
+                        })
                 })
-                .catch( err => {
-                    if (!err.status){
-                        this.success = false;
-                        this.send = !this.send
-                    }
+                .catch(err => {
+
+                    err.inner.forEach(e => { this.formErrors[e.path] = e.message })
                 })
-             } )
-            .catch( err => { this.formErrors = {}; err.inner.forEach( e => { this.formErrors[e.path] = e.message } ) } )
         }
     },
     watch:{

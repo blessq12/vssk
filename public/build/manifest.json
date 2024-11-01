@@ -1,12 +1,9 @@
 {
-  "_bootstrap-c75e0372.js": {
-    "file": "assets/bootstrap-c75e0372.js"
+  "_index.esm-67b35cd1.js": {
+    "file": "assets/index.esm-67b35cd1.js"
   },
-  "_index.esm-0ed190eb.js": {
-    "file": "assets/index.esm-0ed190eb.js"
-  },
-  "_maska-119c14dd.js": {
-    "file": "assets/maska-119c14dd.js"
+  "_maska-56694722.js": {
+    "file": "assets/maska-56694722.js"
   },
   "resources/fonts/Geo/Geologica-Black.woff": {
     "file": "assets/Geologica-Black-8f59ad43.woff",
@@ -77,34 +74,33 @@
     "src": "resources/fonts/Nokia/ofont.ru_Nokia Sans S60.woff"
   },
   "resources/js/sites/cleankirov/app.css": {
-    "file": "assets/app-97bc8a7f.css",
+    "file": "assets/app-568b2e29.css",
     "src": "resources/js/sites/cleankirov/app.css"
   },
   "resources/js/sites/cleankirov/app.js": {
     "css": [
-      "assets/app-97bc8a7f.css"
+      "assets/app-568b2e29.css"
     ],
-    "file": "assets/app-baa49c63.js",
+    "file": "assets/app-0c3013ce.js",
     "imports": [
-      "_maska-119c14dd.js",
-      "_index.esm-0ed190eb.js",
-      "_bootstrap-c75e0372.js"
+      "_maska-56694722.js",
+      "_index.esm-67b35cd1.js"
     ],
     "isEntry": true,
     "src": "resources/js/sites/cleankirov/app.js"
   },
   "resources/js/sites/kovrochist/app.css": {
-    "file": "assets/app-1218410f.css",
+    "file": "assets/app-fba53bba.css",
     "src": "resources/js/sites/kovrochist/app.css"
   },
   "resources/js/sites/kovrochist/app.js": {
     "css": [
-      "assets/app-1218410f.css"
+      "assets/app-fba53bba.css"
     ],
-    "file": "assets/app-d05d3716.js",
+    "file": "assets/app-62ff2e60.js",
     "imports": [
-      "_index.esm-0ed190eb.js",
-      "_maska-119c14dd.js"
+      "_index.esm-67b35cd1.js",
+      "_maska-56694722.js"
     ],
     "isEntry": true,
     "src": "resources/js/sites/kovrochist/app.js"
@@ -117,10 +113,9 @@
     "css": [
       "assets/app-8c343808.css"
     ],
-    "file": "assets/app-852ec663.js",
+    "file": "assets/app-def5ecf5.js",
     "imports": [
-      "_maska-119c14dd.js",
-      "_bootstrap-c75e0372.js"
+      "_maska-56694722.js"
     ],
     "isEntry": true,
     "src": "resources/js/sites/vssk/app.js"

@@ -1,5 +1,6 @@
 <script>
 import { object, string } from 'yup';
+
 export default {
     props:{
         carpets: Object
@@ -26,41 +27,35 @@ export default {
 
     }),
     methods:{
-        validate(){
+        validate() {
+            this.formErrors = {}
             this.schema.validate(this.formInputs, {abortEarly: false})
-            .then( res => {
-                console.log(res)
-                let requestObj = {}
-                requestObj.name = res.name
-                requestObj.tel = res.tel
-                
-                let message = ""
-                message += "Тип: " + res.carpetType + '; Ворс: ' + res.vors
-                message += "\r\n"
-                message += "Дополнительно: ";
-                for (const [key, val] of Object.entries( res.additional )){ 
+                .then(res => {
+                    let message = "Новая заявка с квиза сайта КОВРОЧИСТ\n\n"
+                    message += "Тип: " + res.carpetType + '; Ворс: ' + res.vors
+                    message += "\r\n"
+                    message += "Дополнительно: ";
+                    for (const [key, val] of Object.entries( res.additional )){ 
                     message += val + '; ' 
-                }
-                message += "\r\n"
-                if (res.delivery){
-                    message += "Доставка: " + res.address
-                }
-                message += "\r\n"
-                message += 'Обратная связь: ' + res.feedback
-                message += "\r\n"
-                requestObj.message = message
-                axios.post('api/notify/telegram', requestObj)
-                .then( res => {
-                    this.formErrors = {}
-                    this.success = true
-                    this.send = !this.send
-                } )
-                .catch( err => {
-                    console.log( err )
-                } )
+                    }
+                    message += "\r\n"
+                    if (res.delivery){
+                        message += "Доставка: " + res.address
+                    }
+                    message += "\r\n"
+                    message += 'Обратная связь: ' + res.feedback
+                    message += "\r\n"
+                    message += `Имя: ${res.name}\n`
+                    message += `Телефон: ${res.tel}`
+                    axios.post('api/action/send-order-data', {message})
+                        .then( res => {
+                        
+                        this.success = true
+                        this.send = !this.send
+                        })
+                        .catch( err => console.log( err ) )
             })
             .catch( err => { 
-                this.formErrors = {}
                 err.inner.forEach( e => this.formErrors[e.path] = e.message )
             })
         }
@@ -260,11 +255,9 @@ export default {
                     <div v-else class="d-flex justify-content-center align-items-center border border-light h-100 rounded p-2 p-md-3" style="min-height: 300px;">
                         <transition enter-active-class="animate__animated animate__animate__fadeIn" leave-active-class="animate__animated animate__fadeOut" mode="out-in">
                         <div class="d-flex justify-content-center align-items-center" v-if="success">
-                            <img src="/images/success.webp" alt="" class="img-fluid h-50" style="max-height: 140px;">
                             <h4 class="mb-0 mx-2 w-50">Ваша заявка отправлена! Наш менеджер скоро с вами свяжется</h4>
                         </div>
                         <div class="d-flex justify-content-center align-items-center" v-else>
-                            <img src="/images/fail.png" alt="" class="img-fluid h-50"  style="max-height: 140px;">
                             <h4 class="mb-0 mx-2 w-50">Произошла ошибка. Повторите попытку</h4>
                         </div>
                         </transition>

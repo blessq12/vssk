@@ -14,17 +14,18 @@ export default {
         formData: {
             name: null,
             phone: null
-        },sendStatus: false
-    }), methods:{
+        },
+        sendStatus: false
+    }),
+    methods: {
         send(){
-            axios.post('/api/sendMessage', this.formData).then( res => {
-                if(res.data.status){
-                    this.sendStatus = !this.sendStatus
-                    console.log(res)
+            axios.post('/api/action/send-order-data', {message: "Новая заявка с сайта ВССК\n\n" + `Имя: ${this.formData.name}\nТелефон: ${this.formData.phone}`}).then( res => {
+                this.sendStatus = !this.sendStatus
+                this.formData = {
+                    name: null,
+                    phone: null
                 }
-            } ).catch( err => {
-                console.log(err)
-            } )
+            }).catch( err => console.log(err) )
         }
     }
 }

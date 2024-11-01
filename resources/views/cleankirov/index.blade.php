@@ -77,6 +77,18 @@
     <link rel="stylesheet" href="{{ Storage::disk('assets')->url('cleankirov/assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ Storage::disk('assets')->url('cleankirov/assets/css/linearicons.css') }}">
     <link rel="stylesheet" href="{{ Storage::disk('assets')->url('cleankirov/assets/css/main.css') }}">
+    <style>
+        .banner-area {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        @media(min-width: 768px) {
+            .banner-area {
+                padding-top: 150px;
+                padding-bottom: 150px;
+            }
+        }
+    </style>
     @vite('resources/js/sites/cleankirov/app.js')
 </head>
 <body id="app">
@@ -94,21 +106,64 @@
     <header id="header" id="home">
         <div class="container">
             <div class="row align-items-center justify-content-between d-flex">
-                <div id="logo" style="width: auto!important;" >
-                    <a href="/" class="d-flex align-items-center"><img style="width: 35px;height: auto;" src="{{Storage::disk('assets')->url('cleankirov/images/chistyi_kirov_logo_head.png')}}" alt="{{$company->title }}" title="{{$company->title}}" />
-                    <span style="margin-left: 10px;color: #fff;font-size: 20px;font-weight: 800;">{{explode('-', $company->title)[0]}}</span></a>
+                <div class="col-6 col-md-4">
+                    <div id="logo" style="width: auto!important;" >
+                        <a href="/" class="d-flex align-items-center"><img style="width: 35px;height: auto;" src="{{Storage::disk('assets')->url('cleankirov/images/chistyi_kirov_logo_head.png')}}" alt="{{$company->title }}" title="{{$company->title}}" />
+                        <span style="white-space: nowrap;margin-left: 10px;color: #fff;font-size: 20px;font-weight: 800;">{{explode('-', $company->title)[0]}}</span></a>
+                    </div>
                 </div>
-                <nav id="nav-menu-container" style="width: auto!important;">
-                    <ul class="nav-menu">
-                        <li><a href="#about" class="menu-active">О нас</a></li>
-                        <li><a href="#service">Услуги</a></li>
-                        <li><a href="#unique">Наши предложения</a></li>
-                        <li><a href="#review">Отзывы</a></li>
-                        <li><a href="#faq">Вопросы</a></li>
-                    </ul>
-                </nav><!-- #nav-menu-container -->
+                <div class="col d-none d-md-flex col-md-8 justify-content-end">
+                    <nav id="nav-menu-container p-0" style="width: auto!important;">
+                        <ul class="nav-menu">
+                            <li><a href="#about" class="menu-active">О нас</a></li>
+                            <li><a href="#service">Услуги</a></li>
+                            <li><a href="#unique">Наши предложения</a></li>
+                            <li><a href="#review">Отзывы</a></li>
+                            <li><a href="#faq">Вопросы</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-6 d-md-none d-flex justify-content-end"> 
+                    <button class="btn btn-outline-light btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: #2e2e2e; color: #fff;">
+                        <div class="offcanvas-header">
+                            <div>
+                                <a href="/" class="d-flex align-items-center"><img style="width: 35px;height: auto;" src="{{Storage::disk('assets')->url('cleankirov/images/chistyi_kirov_logo_head.png')}}" alt="{{$company->title }}" title="{{$company->title}}" />
+                                <span style="white-space: nowrap;margin-left: 10px;color: #09bd96;font-size: 20px;font-weight: 800;">{{explode('-', $company->title)[0]}}</span></a>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" id="offcanvas-close" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <p class="mb-4">Чистота вашего интерьера — наша забота!</p>
+                            <div class="d-flex gap-2">
+                                <a href="tel:{{ $company->phone }}" class="btn btn-outline-light mb-4">
+                                    <i class="fa fa-phone"></i> {{ $company->phone }}
+                                </a>
+                                <button class="btn btn-outline-light mb-4" data-bs-toggle="modal" data-bs-target="#requestModal">
+                                    <i class="fa fa-phone"></i> Оставить заявку
+                                </button>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <ul class="list-unstyled p-0 m-0" id="offcanvas-menu" onclick="document.getElementById('offcanvas-close').click()">
+                                    <li><a href="#about">О нас</a></li>
+                                    <li><a href="#service">Услуги</a></li>
+                                    <li><a href="#unique">Наши предложения</a></li>
+                                    <li><a href="#review">Отзывы</a></li>
+                                    <li><a href="#faq">Вопросы</a></li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
+
     </header>
     <!-- start banner Area -->
     <section class="banner-area d-flex align-items-center justify-content-center" id="home" style="background-image: url('{{ Storage::disk('assets')->url('cleankirov/images/header-bg.png') }}');">
@@ -335,7 +390,7 @@
                 </div>
                 <div class="col-lg-6 no-padding home-about-right">
                     <div class="title"> 
-                        <h6 class="text-uppercase fw-light mb-0" style="color: #181e1d">Очевидная разница</h6>
+                        <h6 class="text-uppercase fw-light mb-0" style="color: #09bd96">Очевидная разница</h6>
                         <h2>Невооруженным глазом</h2>
                         <p>
                             Позаботьтесь о состоянии вашего имущества

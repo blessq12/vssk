@@ -4,7 +4,9 @@ export default {
     name: 'QuizCleanKirov',
     mounted() {
         this.restartQuiz();
-        this.dynamicHeight = this.$refs.quizStep1.offsetHeight + 'px';
+        setTimeout(() => {
+            this.dynamicHeight = this.$refs.quizStep1.offsetHeight + 'px';
+        }, 300)
     },
     data() {
         return {
@@ -101,22 +103,27 @@ export default {
             }
         },
         sendOrderData() {
+            this.loading = true;
             this.formErrors = [];
-            this.formSchema.validate(this.orderData, {abortEarly: false}).then(data => {
-                this.loading = true;
-                this.orderData.company_id = 5
-                this.orderData.type = this.furnitureType
+            this.formSchema.validate(this.orderData, { abortEarly: false }).then(data => {
+                let message = `Новая заявка из квиза!\r\n`;
 
-                this.orderData.request_data = JSON.stringify(this.orderData);
-                console.log(JSON.stringify(this.orderData));
+                message += `Тип мебели: ${this.orderData.furnitureType}\r\n`;
+                message += `Размер мебели: ${this.orderData.furnitureSize}\r\n`;
+                if (this.orderData.additionalInfo.length > 0) {
+                    message += `Дополнительные загрязнения: ${this.orderData.additionalInfo.join(', ')}\r\n`;
+                }
 
-                axios.post('/api/action/create-client-request/5', this.orderData).then(res => {
+                message += "\r\n\r\n";
+                message += `Имя: ${data.name}\n`;
+                message += `Телефон: ${data.phone}\n`;
+                
+                axios.post('/api/action/send-order-data', { message: message}).then(res => {
                     console.log(res);
+                    this.restartQuiz();
                 }).catch(err => {
                     console.log(err);
-                }).finally(() => {
-                    this.loading = false;
-                });
+                }).finally(() => this.loading = false);
             }).catch(err => {
                 this.formErrors = err.inner.map(i => i.path);
             });
@@ -136,7 +143,9 @@ export default {
     watch: {
         currentStep() {
             this.$nextTick(() => {
-                this.dynamicHeight = this.$refs[`quizStep${this.currentStep}`].offsetHeight + 'px';
+                setTimeout(() => {
+                    this.dynamicHeight = this.$refs[`quizStep${this.currentStep}`].offsetHeight + 'px';
+                }, 100)
             });
         },
         formErrors() {
@@ -153,7 +162,7 @@ export default {
             enter-active-class="animate__animated animate__fadeInRight"
             leave-active-class="animate__animated animate__fadeOutLeft"
         >
-            <div class="row"  v-if="currentStep === 1" ref="quizStep1">
+            <div class="row row-cols-3 row-cols-md-4 g-3"  v-if="currentStep === 1" ref="quizStep1">
                 <div class="col" v-for="item in furnitureType" :key="item.title">
                     <div class="quiz-item cursor-pointer" @click="currentStep = 2; orderData.furnitureType = item.title; furnitureType = item.type;">
                         <img :src="item.image" alt="" class="img-fluid rounded">
@@ -161,7 +170,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="row" v-if="currentStep === 2" ref="quizStep2">
+            <div class="row row-cols-3 row-cols-md-4 g-3" v-if="currentStep === 2" ref="quizStep2">
                 <div class="col" v-for="item in furnitureSize[furnitureType]" :key="item">
                     <div class="quiz-item cursor-pointer" @click="currentStep = 3; orderData.furnitureSize = item.title;">
                         <img :src="item.image" alt="" class="img-fluid rounded">
@@ -171,7 +180,8 @@ export default {
             </div>
             <div class="row" v-if="currentStep === 3" ref="quizStep3">
                 <div class="col-12 mb-4">
-                    <div class="d-flex flex-wrap gap-2">
+                    <p class="text-light">Укажите, какие дополнительные загрязнения присутствуют</p>
+                    <div class="d-flex flex-wrap gap-2 ">
                         <div v-for="item in additionalInfo" :key="item">
                             <input type="checkbox" class="btn-check" :id="item.value" autocomplete="off" @click="manageAdditionalInfo(item.val_ru)">
                             <label class="btn btn-outline-primary" :for="item.value">{{ item.val_ru }}</label>
@@ -199,6 +209,7 @@ export default {
                             <button class="btn btn-light" :disabled="loading">
                                 <span v-if="loading">
                                     <i class="fa fa-spinner fa-spin"></i>
+                                    Отправка...
                                 </span>
                                 <span v-else>Отправить</span>
                             </button>
@@ -216,6 +227,10 @@ export default {
 </template>
 
 <style scoped lang="sass">
+input:disabled 
+    background-color: #dedede !important
+    color: #6c757d !important
+
 //
 .quiz-container
     min-height: 100px

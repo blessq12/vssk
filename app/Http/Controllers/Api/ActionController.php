@@ -80,7 +80,8 @@ class ActionController extends Controller
     public function sendOrderData(Request $request)
     {
         try {
-            $response = TelegramNotification::sendMessage($request->message);
+            $message = str_replace("_", "\r\n", $request->message);
+            $response = TelegramNotification::sendMessage($message);
         } catch (\Exception $e) {
             $error = $e->getMessage();
         }

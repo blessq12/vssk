@@ -19,6 +19,7 @@
         "@img-comparison-slider/vue": "^8.0.0",
         "animate.css": "^4.1.1",
         "maska": "^2.1.10",
+        "vue3-toastify": "^0.2.4",
         "yup": "^1.4.0"
     }
 }
