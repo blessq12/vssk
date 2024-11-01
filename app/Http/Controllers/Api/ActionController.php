@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 // Requests
-use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
+use App\Http\Requests\ClientRequestData;
+use Illuminate\Http\Request;
 // Services
 use App\Facades\TelegramNotification;
+use App\Facades\ClientRequestHandler;
 // Models
 use App\Models\ClientRequest as RequestModel;
 
@@ -28,18 +30,44 @@ class ActionController extends Controller
         return 'This is help for ActionController';
     }
 
-    public function createClientRequest(ClientRequest $request)
-    {
-        \Log::info('Session Data:', session()->all());
-        $validated = $request->validated();
-
-        // Check for validation errors
-        $clientRequest = RequestModel::create($validated);
+    public function createClientRequest(
+        Request $request,
+        $site_id,
+        // ClientRequest $request,
+        // ClientRequestData $requestData
+    ) {
+        /**
+         * Check if company exists
+         * validate requests
+         * create client request
+         * create client request data
+         * 
+         * return response
+         */
+        $clientInfo = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'company_id' => 'required|integer|exists:companies,id',
+            'type' => 'required|string|max:255|in:carpet,sofa,mattress',
+            'message' => 'nullable|string|max:255',
+            'request_data' => 'nullable|json',
+        ]);
 
         return response()->json([
-            'message' => 'Request created successfully',
-            'data' => $clientRequest,
+            'request' => $clientInfo,
         ]);
+
+
+
+        if (!ClientRequestHandler::createClientRequest($validatedRequest)) return response()->json(['message' => 'Не удалось сохранить заявку'], 400);
+        if (!ClientRequestHandler::createClientRequestData($validatedRequestData)) return response()->json(['message' => 'Не удалось сохранить данные заявки'], 400);
+
+        return response()->json([
+            'message' => 'Заявка успешно создана',
+            'created_request' => ClientRequestHandler::createClientRequest($request->id),
+            'created_request_data' => ClientRequestHandler::createClientRequestData($request->id),
+        ], 200);
     }
     public function getClientRequest($id)
     {

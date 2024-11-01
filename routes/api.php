@@ -18,7 +18,7 @@ use App\Http\Controllers\Api\RawController;
 
 Route::controller(ActionController::class)->prefix('action')->group(function () {
     Route::get('help', 'help');
-    Route::post('/create-client-request', 'createClientRequest');
+    Route::post('/create-client-request/{site_id}', 'createClientRequest');
     Route::get('/get-client-request/{id}', 'getClientRequest');
 });
 

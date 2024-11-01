@@ -15,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('telegram-notification', function () {
             return new \App\Services\TelegramNotification();
         });
+        $this->app->bind('client-request-handler', function () {
+            return new \App\Services\ClientRequestHandler();
+        });
     }
 
     /**

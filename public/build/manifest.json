@@ -1,18 +1,94 @@
 {
-  "_maska-da9c1deb.js": {
-    "file": "assets/maska-da9c1deb.js"
+  "_bootstrap-c75e0372.js": {
+    "file": "assets/bootstrap-c75e0372.js"
+  },
+  "_index.esm-0ed190eb.js": {
+    "file": "assets/index.esm-0ed190eb.js"
+  },
+  "_maska-8590b9dc.js": {
+    "file": "assets/maska-8590b9dc.js"
+  },
+  "resources/fonts/Geo/Geologica-Black.woff": {
+    "file": "assets/Geologica-Black-8f59ad43.woff",
+    "src": "resources/fonts/Geo/Geologica-Black.woff"
+  },
+  "resources/fonts/Geo/Geologica-Black.woff2": {
+    "file": "assets/Geologica-Black-bc9d3daa.woff2",
+    "src": "resources/fonts/Geo/Geologica-Black.woff2"
+  },
+  "resources/fonts/Geo/Geologica-Bold.woff": {
+    "file": "assets/Geologica-Bold-bb587171.woff",
+    "src": "resources/fonts/Geo/Geologica-Bold.woff"
+  },
+  "resources/fonts/Geo/Geologica-Bold.woff2": {
+    "file": "assets/Geologica-Bold-207d4e04.woff2",
+    "src": "resources/fonts/Geo/Geologica-Bold.woff2"
+  },
+  "resources/fonts/Geo/Geologica-ExtraBold.woff": {
+    "file": "assets/Geologica-ExtraBold-0495333f.woff",
+    "src": "resources/fonts/Geo/Geologica-ExtraBold.woff"
+  },
+  "resources/fonts/Geo/Geologica-ExtraBold.woff2": {
+    "file": "assets/Geologica-ExtraBold-19073c99.woff2",
+    "src": "resources/fonts/Geo/Geologica-ExtraBold.woff2"
+  },
+  "resources/fonts/Geo/Geologica-ExtraLight.woff": {
+    "file": "assets/Geologica-ExtraLight-b6c97fc6.woff",
+    "src": "resources/fonts/Geo/Geologica-ExtraLight.woff"
+  },
+  "resources/fonts/Geo/Geologica-ExtraLight.woff2": {
+    "file": "assets/Geologica-ExtraLight-0364a33d.woff2",
+    "src": "resources/fonts/Geo/Geologica-ExtraLight.woff2"
+  },
+  "resources/fonts/Geo/Geologica-Medium.woff": {
+    "file": "assets/Geologica-Medium-19680d4f.woff",
+    "src": "resources/fonts/Geo/Geologica-Medium.woff"
+  },
+  "resources/fonts/Geo/Geologica-Medium.woff2": {
+    "file": "assets/Geologica-Medium-37e3924e.woff2",
+    "src": "resources/fonts/Geo/Geologica-Medium.woff2"
+  },
+  "resources/fonts/Geo/Geologica-Regular.woff": {
+    "file": "assets/Geologica-Regular-780fb0d8.woff",
+    "src": "resources/fonts/Geo/Geologica-Regular.woff"
+  },
+  "resources/fonts/Geo/Geologica-Regular.woff2": {
+    "file": "assets/Geologica-Regular-f1d503d5.woff2",
+    "src": "resources/fonts/Geo/Geologica-Regular.woff2"
+  },
+  "resources/fonts/Geo/Geologica-SemiBold.woff": {
+    "file": "assets/Geologica-SemiBold-4ba97ddb.woff",
+    "src": "resources/fonts/Geo/Geologica-SemiBold.woff"
+  },
+  "resources/fonts/Geo/Geologica-SemiBold.woff2": {
+    "file": "assets/Geologica-SemiBold-7e9c97c0.woff2",
+    "src": "resources/fonts/Geo/Geologica-SemiBold.woff2"
+  },
+  "resources/fonts/Geo/Geologica-Thin.woff": {
+    "file": "assets/Geologica-Thin-00057683.woff",
+    "src": "resources/fonts/Geo/Geologica-Thin.woff"
+  },
+  "resources/fonts/Geo/Geologica-Thin.woff2": {
+    "file": "assets/Geologica-Thin-bc72ec61.woff2",
+    "src": "resources/fonts/Geo/Geologica-Thin.woff2"
+  },
+  "resources/fonts/Nokia/ofont.ru_Nokia Sans S60.woff": {
+    "file": "assets/ofont.ru_Nokia Sans S60-d4aa0dbf.woff",
+    "src": "resources/fonts/Nokia/ofont.ru_Nokia Sans S60.woff"
   },
   "resources/js/sites/cleankirov/app.css": {
-    "file": "assets/app-dc6f02f7.css",
+    "file": "assets/app-2ef7bf08.css",
     "src": "resources/js/sites/cleankirov/app.css"
   },
   "resources/js/sites/cleankirov/app.js": {
     "css": [
-      "assets/app-dc6f02f7.css"
+      "assets/app-2ef7bf08.css"
     ],
-    "file": "assets/app-2d605bb0.js",
+    "file": "assets/app-1e289417.js",
     "imports": [
-      "_maska-da9c1deb.js"
+      "_maska-8590b9dc.js",
+      "_index.esm-0ed190eb.js",
+      "_bootstrap-c75e0372.js"
     ],
     "isEntry": true,
     "src": "resources/js/sites/cleankirov/app.js"
@@ -25,9 +101,10 @@
     "css": [
       "assets/app-1218410f.css"
     ],
-    "file": "assets/app-fdbcd671.js",
+    "file": "assets/app-c1ff90e2.js",
     "imports": [
-      "_maska-da9c1deb.js"
+      "_index.esm-0ed190eb.js",
+      "_maska-8590b9dc.js"
     ],
     "isEntry": true,
     "src": "resources/js/sites/kovrochist/app.js"
@@ -40,15 +117,16 @@
     "css": [
       "assets/app-8c343808.css"
     ],
-    "file": "assets/app-cf5776d5.js",
+    "file": "assets/app-9d6af00f.js",
     "imports": [
-      "_maska-da9c1deb.js"
+      "_maska-8590b9dc.js",
+      "_bootstrap-c75e0372.js"
     ],
     "isEntry": true,
     "src": "resources/js/sites/vssk/app.js"
   },
   "resources/sass/sites/kovrochist/app.sass": {
-    "file": "assets/app-b56c7f7a.css",
+    "file": "assets/app-0f7db90c.css",
     "isEntry": true,
     "src": "resources/sass/sites/kovrochist/app.sass"
   },
